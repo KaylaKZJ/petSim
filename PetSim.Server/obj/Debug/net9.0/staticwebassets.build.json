@@ -1,0 +1,24 @@
+{
+  "Version": 1,
+  "Hash": "jtN9ngZPegPC4PU05zlUHCwtJz2UOSs7xLTFsvwgzBg=",
+  "Source": "PetSim.Server",
+  "BasePath": "_content/PetSim.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\kayla\\source\\repos\\PetSim\\petsim.client\\petsim.client.esproj",
+      "Version": 2,
+      "Source": "petsim.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

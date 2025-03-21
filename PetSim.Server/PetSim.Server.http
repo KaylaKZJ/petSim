@@ -1,0 +1,44 @@
+@PetSim.Server_HostAddress = http://localhost:5210
+@PetId = 0972cb6a-eb6d-4f7a-8de0-a8abf4abc8db
+
+###
+GET {{PetSim.Server_HostAddress}}/pet?id={{PetId}}
+Content-Type: application/json
+Accept: application/json
+
+###
+DELETE {{PetSim.Server_HostAddress}}/pet?id={{PetId}}
+Content-Type: application/json
+Accept: application/json
+
+###
+POST {{PetSim.Server_HostAddress}}/pet/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Name": "Fluffy"
+}
+
+###
+PUT {{PetSim.Server_HostAddress}}/pet?id={{PetId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Name": "return ov uffy"
+}
+
+###
+GET {{PetSim.Server_HostAddress}}/stats/{{PetId}}
+Content-Type: application/json
+Accept: application/json
+
+###
+PUT {{PetSim.Server_HostAddress}}/stats?petId={{PetId}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Happiness": 100
+}
