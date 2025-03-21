@@ -4,11 +4,11 @@ namespace PetSim.Server.Models;
 
 public class Pet {
     public Guid Id { get; set; }
-    public  string Name { get; set; }
+    public  string? Name { get; set; }
     public DateTime Birthdate { get; set; }
 
     // Navigation property for Stats
-    public  Stats Stats { get; set; }
+    public  Stats? Stats { get; set; }
 
     // Parameterless constructor for EF (needed by EF to create the object)
     public Pet() { }

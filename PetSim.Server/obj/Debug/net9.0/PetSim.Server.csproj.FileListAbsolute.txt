@@ -163,10 +163,10 @@ C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\staticwebasset
 C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.PetSim.Server.props
 C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.PetSim.Server.props
 C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\staticwebassets.pack.json
-C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\PetSim.S.4DD9C443.Up2Date
 C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\PetSim.Server.dll
 C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\refint\PetSim.Server.dll
 C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\PetSim.Server.pdb
 C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\PetSim.Server.genruntimeconfig.cache
 C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\ref\PetSim.Server.dll
+C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\PetSim.Server.sourcelink.json

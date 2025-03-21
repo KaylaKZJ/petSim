@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-
 namespace PetSim.Server.Models;
 
 
@@ -13,5 +12,5 @@ public class Stats {
     public Guid PetId { get; set; }
     
     [JsonIgnore]
-    public  Pet Pet { get; set; }
+    public  Pet? Pet { get; set; }
 }

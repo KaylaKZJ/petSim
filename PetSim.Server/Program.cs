@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using PetSim.Server.Data;
 using PetSim.Server.Services;
+using PetSim.Server.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddDbContext<PetSimContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("PetSimContext")).EnableSensitiveDataLogging().LogTo(Console.WriteLine)); // Logs to console for debugging
 builder.Services.AddScoped<PetService>();
 builder.Services.AddScoped<StatsService>();
+builder.Services.AddScoped<StatsRepository>();
+builder.Services.AddScoped<PetRepository>();
 builder.Services.AddAutoMapper(typeof(PetProfile));
 builder.Services.AddAutoMapper(typeof(StatsProfile));
 
