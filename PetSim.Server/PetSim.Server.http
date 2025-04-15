@@ -1,5 +1,5 @@
-@PetSim.Server_HostAddress = http://localhost:5210
-@PetId = 0972cb6a-eb6d-4f7a-8de0-a8abf4abc8db
+@PetSim.Server_HostAddress = http://localhost:5210/api
+@PetId = 2867b044-e04d-474a-97e8-65fe749380d4
 
 ###
 GET {{PetSim.Server_HostAddress}}/pet?id={{PetId}}

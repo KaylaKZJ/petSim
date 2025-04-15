@@ -15,9 +15,9 @@ namespace PetSim.Server.Migrations
                 name: "Pet",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Birthdate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    Birthdate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,11 +28,11 @@ namespace PetSim.Server.Migrations
                 name: "Stats",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Happiness = table.Column<int>(type: "int", nullable: false),
-                    Hunger = table.Column<int>(type: "int", nullable: false),
-                    Boredom = table.Column<int>(type: "int", nullable: false),
-                    PetId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Happiness = table.Column<int>(type: "INTEGER", nullable: false),
+                    Hunger = table.Column<int>(type: "INTEGER", nullable: false),
+                    Boredom = table.Column<int>(type: "INTEGER", nullable: false),
+                    PetId = table.Column<Guid>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

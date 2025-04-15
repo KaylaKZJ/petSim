@@ -13,7 +13,7 @@ builder.Services.AddOpenApi();
 
 
  // Add services to the container.
-builder.Services.AddDbContext<PetSimContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("PetSimContext")).EnableSensitiveDataLogging().LogTo(Console.WriteLine)); // Logs to console for debugging
+builder.Services.AddDbContext<PetSimContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("PetSimContext"))); 
 builder.Services.AddScoped<PetService>();
 builder.Services.AddScoped<StatsService>();
 builder.Services.AddScoped<StatsRepository>();
@@ -48,6 +48,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
 
 app.UseAuthorization();
 
