@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetSim.Server.Data;
 
@@ -10,9 +11,11 @@ using PetSim.Server.Data;
 namespace PetSim.Server.Migrations
 {
     [DbContext(typeof(PetSimContext))]
-    partial class PetSimContextModelSnapshot : ModelSnapshot
+    [Migration("20250425142340_StatsSeedData")]
+    partial class StatsSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");

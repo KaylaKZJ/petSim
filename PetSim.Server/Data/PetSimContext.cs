@@ -3,21 +3,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PetSim.Server.Data;
 
-public class PetSimContext : DbContext {
-    public PetSimContext (DbContextOptions<PetSimContext> options) : base(options) {}
+public class PetSimContext : DbContext
+{
+    public PetSimContext(DbContextOptions<PetSimContext> options) : base(options) { }
 
     public DbSet<Pet> Pet => Set<Pet>();
     public DbSet<Stats> Stats => Set<Stats>();
-  
-  protected override void OnModelCreating(ModelBuilder modelBuilder)
+
+    public DbSet<StatsDistribution> StatsDistribution => Set<StatsDistribution>();
+
+    public DbSet<StatsAction> StatsAction => Set<StatsAction>();
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Stats>()
             .HasOne(s => s.Pet)
-            .WithOne(p => p.Stats) // Explicitly define the one-to-one relationship
+            .WithOne(p => p.Stats)
             .HasForeignKey<Stats>(s => s.PetId)
-            .OnDelete(DeleteBehavior.Cascade); // Delete stats on delete pet
+            .OnDelete(DeleteBehavior.Cascade);
 
-        base.OnModelCreating(modelBuilder);  
+        modelBuilder.Entity<StatsDistribution>()
+            .HasOne(s => s.StatsAction)
+            .WithOne(a => a.StatsDistribution)
+            .HasForeignKey<StatsAction>(s => s.StatsActionId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        base.OnModelCreating(modelBuilder);
     }
 
 
