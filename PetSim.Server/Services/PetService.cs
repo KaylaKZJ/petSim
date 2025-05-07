@@ -2,16 +2,18 @@ using PetSim.Server.Models;
 using PetSim.Server.Repositories;
 namespace PetSim.Server.Services;
 
-public class PetService {
+public class PetService
+{
 
     private readonly PetRepository _repository;
 
-    public PetService(PetRepository repository ) {
-       _repository = repository;
+    public PetService(PetRepository repository)
+    {
+        _repository = repository;
     }
 
 
-    public async Task<Guid> CreatePet(CreatePetDto createPetDto)
+    public async Task<Pet> CreatePet(CreatePetDto createPetDto)
     {
         return await _repository.CreatePet(createPetDto);
     }
@@ -27,8 +29,9 @@ public class PetService {
     }
 
 
-    public async Task<bool> DeletePet(Guid id) {
+    public async Task<bool> DeletePet(Guid id)
+    {
         return await _repository.DeletePet(id);
     }
 
-    }
+}

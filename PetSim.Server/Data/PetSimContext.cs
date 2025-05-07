@@ -9,9 +9,8 @@ public class PetSimContext : DbContext
 
     public DbSet<Pet> Pet => Set<Pet>();
     public DbSet<Stats> Stats => Set<Stats>();
-
+    public DbSet<PetType> PetTypes => Set<PetType>();
     public DbSet<StatsDistribution> StatsDistribution => Set<StatsDistribution>();
-
     public DbSet<StatsAction> StatsAction => Set<StatsAction>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

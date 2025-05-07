@@ -1,23 +1,25 @@
-using Microsoft.AspNetCore.Authorization.Infrastructure;
-
 namespace PetSim.Server.Models;
 
-public class Pet {
+public class Pet
+{
     public Guid Id { get; set; }
-    public  string? Name { get; set; }
+    public string? Name { get; set; }
+    public PetType? Type { get; set; }
+    public Guid PetTypeID { get; set; }
     public DateTime Birthdate { get; set; }
 
     // Navigation property for Stats
-    public  Stats? Stats { get; set; }
+    public Stats? Stats { get; set; }
 
     // Parameterless constructor for EF (needed by EF to create the object)
     public Pet() { }
 
     // Constructor ensures Stats is initialized
-    public Pet(CreatePetDto CreatePetDto )
+    public Pet(CreatePetDto CreatePetDto, PetType petType)
     {
         Id = Guid.NewGuid();
         Name = CreatePetDto.Name;
+        Type = petType;
         Birthdate = DateTime.UtcNow;
         Stats = new Stats
         {
