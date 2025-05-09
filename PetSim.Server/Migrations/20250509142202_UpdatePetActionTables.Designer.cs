@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetSim.Server.Data;
 
@@ -11,9 +12,11 @@ using PetSim.Server.Data;
 namespace PetSim.Server.Migrations
 {
     [DbContext(typeof(PetSimContext))]
-    partial class PetSimContextModelSnapshot : ModelSnapshot
+    [Migration("20250509142202_UpdatePetActionTables")]
+    partial class UpdatePetActionTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -141,8 +144,8 @@ namespace PetSim.Server.Migrations
                             b1.Property<int>("Tiredness")
                                 .HasColumnType("int");
 
-                            b1.Property<double>("Weight")
-                                .HasColumnType("float");
+                            b1.Property<int>("Weight")
+                                .HasColumnType("int");
 
                             b1.HasKey("PetStatsId");
 
@@ -191,8 +194,8 @@ namespace PetSim.Server.Migrations
                             b1.Property<int>("Tiredness")
                                 .HasColumnType("int");
 
-                            b1.Property<double>("Weight")
-                                .HasColumnType("float");
+                            b1.Property<int>("Weight")
+                                .HasColumnType("int");
 
                             b1.HasKey("StatsDistributionId");
 

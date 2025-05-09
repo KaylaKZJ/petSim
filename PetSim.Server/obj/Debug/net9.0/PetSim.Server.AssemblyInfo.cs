@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PetSim.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef66b58363da8af3f94534f87a5499aa0d26ae11")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c7823ef14ed77d069b7a63cf9a0aebd40a19bf61")]
 [assembly: System.Reflection.AssemblyProductAttribute("PetSim.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PetSim.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

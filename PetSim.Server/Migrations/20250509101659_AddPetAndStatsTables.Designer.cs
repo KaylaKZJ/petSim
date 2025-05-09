@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetSim.Server.Data;
 
@@ -11,9 +12,11 @@ using PetSim.Server.Data;
 namespace PetSim.Server.Migrations
 {
     [DbContext(typeof(PetSimContext))]
-    partial class PetSimContextModelSnapshot : ModelSnapshot
+    [Migration("20250509101659_AddPetAndStatsTables")]
+    partial class AddPetAndStatsTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,18 +37,14 @@ namespace PetSim.Server.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("PetStatsId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("PetTypeID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
-                    b.ToTable("Pets");
+                    b.HasIndex("PetTypeID");
+
+                    b.ToTable("Pet");
                 });
 
             modelBuilder.Entity("PetSim.Server.Models.PetStats", b =>
@@ -87,9 +86,6 @@ namespace PetSim.Server.Migrations
                     b.Property<Guid>("PetTypeID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("StatsDistributionId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -113,10 +109,21 @@ namespace PetSim.Server.Migrations
                     b.ToTable("StatsDistribution");
                 });
 
+            modelBuilder.Entity("PetSim.Server.Models.Pet", b =>
+                {
+                    b.HasOne("PetSim.Server.Models.PetType", "Type")
+                        .WithMany()
+                        .HasForeignKey("PetTypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Type");
+                });
+
             modelBuilder.Entity("PetSim.Server.Models.PetStats", b =>
                 {
                     b.HasOne("PetSim.Server.Models.Pet", "Pet")
-                        .WithOne("PetStats")
+                        .WithOne("Stats")
                         .HasForeignKey("PetSim.Server.Models.PetStats", "PetId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -141,8 +148,8 @@ namespace PetSim.Server.Migrations
                             b1.Property<int>("Tiredness")
                                 .HasColumnType("int");
 
-                            b1.Property<double>("Weight")
-                                .HasColumnType("float");
+                            b1.Property<int>("Weight")
+                                .HasColumnType("int");
 
                             b1.HasKey("PetStatsId");
 
@@ -191,8 +198,8 @@ namespace PetSim.Server.Migrations
                             b1.Property<int>("Tiredness")
                                 .HasColumnType("int");
 
-                            b1.Property<double>("Weight")
-                                .HasColumnType("float");
+                            b1.Property<int>("Weight")
+                                .HasColumnType("int");
 
                             b1.HasKey("StatsDistributionId");
 
@@ -208,7 +215,7 @@ namespace PetSim.Server.Migrations
 
             modelBuilder.Entity("PetSim.Server.Models.Pet", b =>
                 {
-                    b.Navigation("PetStats");
+                    b.Navigation("Stats");
                 });
 
             modelBuilder.Entity("PetSim.Server.Models.StatsDistribution", b =>

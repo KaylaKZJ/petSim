@@ -12,11 +12,11 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 
- // Add services to the container.
-builder.Services.AddDbContext<PetSimContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("PetSimContext"))); 
+// Add services to the container.
+builder.Services.AddDbContext<PetSimContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("PetSimContext")).EnableSensitiveDataLogging().LogTo(Console.WriteLine));
 builder.Services.AddScoped<PetService>();
 builder.Services.AddScoped<StatsService>();
-builder.Services.AddScoped<StatsRepository>();
+builder.Services.AddScoped<PetStatsRepository>();
 builder.Services.AddScoped<PetRepository>();
 builder.Services.AddAutoMapper(typeof(PetProfile));
 builder.Services.AddAutoMapper(typeof(StatsProfile));
@@ -27,9 +27,12 @@ try
 {
     using (var scope = app.Services.CreateScope())
     {
-        var context = scope.ServiceProvider.GetRequiredService<PetSimContext>();
+        var services = scope.ServiceProvider;
+        var context = services.GetRequiredService<PetSimContext>();
+        var env = services.GetRequiredService<IWebHostEnvironment>();
         context.Database.CanConnect(); // Test the DB connection
         Console.WriteLine("Connected to DB successfully!");
+        DataSeeder.Seed(context, env);
     }
 }
 catch (Exception ex)

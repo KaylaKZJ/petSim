@@ -4,13 +4,13 @@ using PetSim.Server.Data;
 using PetSim.Server.Models;
 namespace PetSim.Server.Repositories;
 
-public class StatsRepository
+public class PetStatsRepository
 {
 
     private readonly PetSimContext _context;
     private readonly IMapper _mapper;
 
-    public StatsRepository(PetSimContext context, IMapper mapper)
+    public PetStatsRepository(PetSimContext context, IMapper mapper)
     {
         _context = context;
         _mapper = mapper;
@@ -18,12 +18,12 @@ public class StatsRepository
 
     public async Task<List<PetStats>> GetAllStats()
     {
-        return await _context.Stats.ToListAsync();
+        return await _context.PetStats.ToListAsync();
     }
 
     public async Task<PetStats?> GetStatsByPetId(Guid petId)
     {
-        return await _context.Stats.FirstOrDefaultAsync(stats => stats.PetId == petId);
+        return await _context.PetStats.FirstOrDefaultAsync(stats => stats.PetId == petId);
     }
 
     public async Task<PetStats?> UpdateStatsByPetId(Guid petId, UpdateStatsDto statsUpdate)

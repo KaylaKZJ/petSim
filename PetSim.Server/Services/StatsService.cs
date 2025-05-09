@@ -5,9 +5,9 @@ namespace PetSim.Server.Services;
 public class StatsService
 {
 
-    private readonly StatsRepository _statsRepository;
+    private readonly PetStatsRepository _statsRepository;
 
-    public StatsService(StatsRepository statsRepository)
+    public StatsService(PetStatsRepository statsRepository)
     {
         _statsRepository = statsRepository;
     }

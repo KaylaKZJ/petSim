@@ -22,17 +22,17 @@ public class PetRepository
 
         var petType = await _context.PetTypes.FirstOrDefaultAsync(pt => pt.Type == createPetDto.Type);
 
-        if (petType == null) throw new Exception($"Pet type {createPetDto.Type} not found");
+        if (petType == null || petType.Type == null) throw new Exception($"Pet type {createPetDto.Type} not found");
 
-        Pet newPet = new Pet(createPetDto, petType);
+        Pet newPet = new Pet(createPetDto, petType.Type);
 
-        _context.Pet.Add(newPet);
+        _context.Pets.Add(newPet);
         await _context.SaveChangesAsync();
 
         // save twice because pet id exists not before 1st save
-        if (newPet.Stats != null)
+        if (newPet.PetStats != null)
         {
-            newPet.Stats.PetId = newPet.Id;
+            newPet.PetStats.PetId = newPet.Id;
         }
 
         await _context.SaveChangesAsync();
@@ -42,7 +42,7 @@ public class PetRepository
 
     public async Task<Pet?> GetPet(Guid id)
     {
-        return await _context.Pet.FindAsync(id);
+        return await _context.Pets.FindAsync(id);
     }
 
     public async Task<Pet?> UpdatePet(Guid id, UpdatePetDto petUpdate)
@@ -65,7 +65,7 @@ public class PetRepository
 
         if (pet != null)
         {
-            _context.Pet.Remove(pet);
+            _context.Pets.Remove(pet);
             await _context.SaveChangesAsync();
             return true;
         }

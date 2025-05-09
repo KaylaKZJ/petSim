@@ -196,3 +196,6 @@ C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\refint\PetSim.
 C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\PetSim.Server.pdb
 C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\PetSim.Server.genruntimeconfig.cache
 C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\ref\PetSim.Server.dll
+C:\Users\kayla\source\repos\PetSim\PetSim.Server\bin\Debug\net9.0\SeedData\petTypes.json
+C:\Users\kayla\source\repos\PetSim\PetSim.Server\bin\Debug\net9.0\SeedData\pets.json
+C:\Users\kayla\source\repos\PetSim\PetSim.Server\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

@@ -5,22 +5,26 @@ namespace PetSim.Server.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PetController : ControllerBase {
+    public class PetController : ControllerBase
+    {
         private readonly PetService _petService;
 
-        public PetController(PetService petService) {
+        public PetController(PetService petService)
+        {
             _petService = petService;
         }
 
 
-        [HttpPost] 
-        public async Task<IActionResult> CreatePet(CreatePetDto CreatePetDto) {
-           var newPetId = await _petService.CreatePet(CreatePetDto);
+        [HttpPost]
+        public async Task<IActionResult> CreatePet(CreatePetDto CreatePetDto)
+        {
+            var newPetId = await _petService.CreatePet(CreatePetDto);
             return Ok(new { message = "Pet created successfully!", Id = newPetId });
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetPet(Guid id) {
+        public async Task<IActionResult> GetPet(Guid id)
+        {
             var pet = await _petService.GetPet(id);
 
             if (pet == null)
@@ -28,12 +32,13 @@ namespace PetSim.Server.Controllers
                 return NotFound(new { message = "Pet not found" });
             }
 
-            pet.Stats = null;
+            pet.PetStats = null;
             return Ok(new { message = "Pet found successfully!", content = pet });
         }
 
-        [HttpPut] 
-        public async Task<IActionResult> UpdatePet(Guid id, UpdatePetDto updatedPet) {
+        [HttpPut]
+        public async Task<IActionResult> UpdatePet(Guid id, UpdatePetDto updatedPet)
+        {
             var pet = await _petService.UpdatePet(id, updatedPet);
 
             if (pet == null)
@@ -41,13 +46,14 @@ namespace PetSim.Server.Controllers
                 return NotFound(new { message = "Pet not found" });
             }
 
-            pet.Stats = null;
+            pet.PetStats = null;
             return Ok(new { message = "Pet Updated successfully!", content = pet });
 
         }
 
-        [HttpDelete] 
-        public async Task<IActionResult> DeletePet(Guid id) {
+        [HttpDelete]
+        public async Task<IActionResult> DeletePet(Guid id)
+        {
             await _petService.DeletePet(id);
             return Ok(new { message = "Pet deleted successfully!" });
         }
