@@ -1,16 +1,12 @@
-using System.Text.Json.Serialization;
 namespace PetSim.Server.Models;
 
-
-public class Stats {
-    public Guid Id { get; set; }
+public class Stats
+{
     public int Happiness { get; set; }
     public int Hunger { get; set; }
     public int Boredom { get; set; }
+    public int Tiredness { get; set; }
+    public int Weight { get; set; }
+    public int Loneliness { get; set; }
 
-    // Foreign key reference back to Pet
-    public Guid PetId { get; set; }
-    
-    [JsonIgnore]
-    public  Pet? Pet { get; set; }
 }

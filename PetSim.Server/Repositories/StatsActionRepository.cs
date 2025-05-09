@@ -25,8 +25,6 @@ public class StatsActionRepository
 
         var statsActionId = Guid.NewGuid();
 
-
-
         var statsAction = new StatsAction
         {
             StatsActionId = statsActionId,
@@ -39,9 +37,7 @@ public class StatsActionRepository
             Id = Guid.NewGuid(),
             StatsActionId = statsActionId,
             StatsAction = statsAction,
-            Happiness = createStatsActionDto.StatsDistribution.Happiness,
-            Hunger = createStatsActionDto.StatsDistribution.Hunger,
-            Boredom = createStatsActionDto.StatsDistribution.Boredom
+            Stats = createStatsActionDto.StatsDistribution.Stats
         };
 
         statsAction.StatsDistribution = statsDistribution;

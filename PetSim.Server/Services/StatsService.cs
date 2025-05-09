@@ -2,25 +2,27 @@ using PetSim.Server.Models;
 using PetSim.Server.Repositories;
 namespace PetSim.Server.Services;
 
-public class StatsService {
+public class StatsService
+{
 
     private readonly StatsRepository _statsRepository;
 
-    public StatsService(StatsRepository statsRepository) {
+    public StatsService(StatsRepository statsRepository)
+    {
         _statsRepository = statsRepository;
     }
 
-    public async Task<List<Stats>> GetAllStats()
+    public async Task<List<PetStats>> GetAllStats()
     {
         return await _statsRepository.GetAllStats();
     }
 
-    public async Task<Stats?> GetStatsByPetId(Guid petId)
+    public async Task<PetStats?> GetStatsByPetId(Guid petId)
     {
         return await _statsRepository.GetStatsByPetId(petId);
     }
 
-    public async Task<Stats?> UpdateStatsByPetId(Guid petId, UpdateStatsDto statsUpdate)
+    public async Task<PetStats?> UpdateStatsByPetId(Guid petId, UpdateStatsDto statsUpdate)
     {
         return await _statsRepository.UpdateStatsByPetId(petId, statsUpdate);
     }

@@ -9,7 +9,7 @@ public class Pet
     public DateTime Birthdate { get; set; }
 
     // Navigation property for Stats
-    public Stats? Stats { get; set; }
+    public PetStats? Stats { get; set; }
 
     // Parameterless constructor for EF (needed by EF to create the object)
     public Pet() { }
@@ -21,13 +21,19 @@ public class Pet
         Name = CreatePetDto.Name;
         Type = petType;
         Birthdate = DateTime.UtcNow;
-        Stats = new Stats
+        Stats = new PetStats
         {
             Id = Guid.NewGuid(),
             PetId = Id,
-            Happiness = 100,
-            Hunger = 0,
-            Boredom = 0
+            Stats = new Stats
+            {
+                Happiness = 100,
+                Hunger = 0,
+                Boredom = 0,
+                Tiredness = 0,
+                Weight = 0,
+                Loneliness = 0,
+            }
         };
     }
 }

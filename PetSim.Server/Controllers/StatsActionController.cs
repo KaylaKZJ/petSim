@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PetSim.Server.Services;
 
-namespace StatsActionSim.Server.Controllers
+namespace PetSim.Server.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -19,6 +19,7 @@ namespace StatsActionSim.Server.Controllers
         public async Task<IActionResult> CreateStatsAction(CreateStatsActionDto CreateStatsActionDto)
         {
             var newStatsActionId = await _statsActionService.CreateStatsAction(CreateStatsActionDto);
+
             return Ok(new { message = "StatsAction created successfully!", Id = newStatsActionId });
         }
 
