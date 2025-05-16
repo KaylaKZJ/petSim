@@ -12,6 +12,10 @@ public class StatsActionService
         _repository = repository;
     }
 
+    public async Task<Stats> TakeStatsAction(TakeStatsActionDto takeStatsActionDto)
+    {
+        return await _repository.TakeStatsAction(takeStatsActionDto);
+    }
 
     public async Task<StatsAction> CreateStatsAction(CreateStatsActionDto createStatsActionDto)
     {

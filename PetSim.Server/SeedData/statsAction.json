@@ -30,7 +30,8 @@
         "Boredom": -5,
         "Hunger": -30,
         "Tiredness": 5,
-        "Loneliness": -5
+        "Loneliness": -5,
+        "Weight": 2.5
       }
     },
     "PetTypes": [

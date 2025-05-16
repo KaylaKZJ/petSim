@@ -17,6 +17,35 @@ public class StatsActionRepository
     }
 
 
+    public async Task<Stats> TakeStatsAction(TakeStatsActionDto takeStatsActionDto)
+    {
+        var statsAction = await _context.StatsAction.FirstOrDefaultAsync(sa => sa.Type == takeStatsActionDto.Type);
+        if (statsAction == null)
+        {
+            throw new Exception($"{takeStatsActionDto.Type} was not found");
+        }
+        var petStats = await _context.PetStats.FirstOrDefaultAsync(stats => stats.PetId == takeStatsActionDto.PetId);
+        if (petStats == null)
+        {
+            throw new Exception($"Pet of Id {takeStatsActionDto.PetId} was not found");
+        }
+
+        var statsDistribution = await _context.StatsDistribution.FirstOrDefaultAsync(sd => sd.Id == statsAction.StatsDistributionId);
+        if (statsDistribution == null)
+        {
+            throw new Exception($"statsDistribution of statsActionId {statsAction.Id} was not found");
+        }
+
+        petStats.Stats.Loneliness = StatsActionHelper.AddStat(petStats.Stats.Loneliness, statsDistribution.Stats.Loneliness);
+        petStats.Stats.Happiness = StatsActionHelper.AddStat(petStats.Stats.Happiness, statsDistribution.Stats.Happiness);
+        petStats.Stats.Hunger = StatsActionHelper.AddStat(petStats.Stats.Hunger, statsDistribution.Stats.Hunger);
+        petStats.Stats.Boredom = StatsActionHelper.AddStat(petStats.Stats.Boredom, statsDistribution.Stats.Boredom);
+        petStats.Stats.Weight = StatsActionHelper.AddStat(petStats.Stats.Weight, statsDistribution.Stats.Weight);
+
+        await _context.SaveChangesAsync();
+
+        return petStats.Stats;
+    }
     public async Task<StatsAction> CreateStatsAction(CreateStatsActionDto createStatsActionDto)
     {
 

@@ -18,6 +18,8 @@ builder.Services.AddScoped<PetService>();
 builder.Services.AddScoped<StatsService>();
 builder.Services.AddScoped<PetStatsRepository>();
 builder.Services.AddScoped<PetRepository>();
+builder.Services.AddScoped<StatsActionService>();
+builder.Services.AddScoped<StatsActionRepository>();
 builder.Services.AddAutoMapper(typeof(PetProfile));
 builder.Services.AddAutoMapper(typeof(StatsProfile));
 

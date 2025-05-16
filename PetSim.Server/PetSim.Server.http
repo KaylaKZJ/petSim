@@ -1,5 +1,5 @@
 @PetSim.Server_HostAddress = http://localhost:5210/api
-@PetId = 2867b044-e04d-474a-97e8-65fe749380d4
+@PetId = 5f086c7c-913a-4799-b8a3-d8287480d851
 
 ###
 GET {{PetSim.Server_HostAddress}}/pet?id={{PetId}}
@@ -17,7 +17,8 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "Name": "Fluffy"
+  "Name": "Fluffy",
+  "Type": "Cat"
 }
 
 ###
@@ -41,4 +42,14 @@ Accept: application/json
 
 {
   "Happiness": 100
+}
+
+###
+POST {{PetSim.Server_HostAddress}}/statsAction/action
+Content-Type: application/json
+Accept: application/json
+
+{
+  "Type": "Feed",
+  "PetId": "7D65341B-C29F-475E-9AE5-72F54B65761D"
 }

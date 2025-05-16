@@ -15,7 +15,15 @@ namespace PetSim.Server.Controllers
         }
 
 
-        [HttpPost]
+        [HttpPost("action")]
+        public async Task<IActionResult> TakeStatsAction(TakeStatsActionDto TakeStatsActionDto)
+        {
+            var newPetStats = await _statsActionService.TakeStatsAction(TakeStatsActionDto);
+
+            return Ok(new { message = "StatsAction taken successfully!", PetStats = newPetStats });
+        }
+
+        [HttpPost("create")]
         public async Task<IActionResult> CreateStatsAction(CreateStatsActionDto CreateStatsActionDto)
         {
             var newStatsActionId = await _statsActionService.CreateStatsAction(CreateStatsActionDto);
