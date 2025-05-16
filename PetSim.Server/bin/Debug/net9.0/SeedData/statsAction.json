@@ -1,0 +1,218 @@
+[
+  {
+    "Type": "Play",
+    "StatsDistribution": {
+      "Stats": {
+        "Happiness": 15,
+        "Boredom": -15,
+        "Hunger": 5,
+        "Tiredness": 10,
+        "Loneliness": -10
+      }
+    },
+    "PetTypes": [
+      { "Type": "Dog" },
+      { "Type": "Cat" },
+      { "Type": "Hamster" },
+      { "Type": "Ferret" },
+      { "Type": "Parrot" },
+      { "Type": "Rabbit" },
+      { "Type": "Chinchilla" },
+      { "Type": "Guinea Pig" },
+      { "Type": "Horse" }
+    ]
+  },
+  {
+    "Type": "Feed",
+    "StatsDistribution": {
+      "Stats": {
+        "Happiness": 10,
+        "Boredom": -5,
+        "Hunger": -30,
+        "Tiredness": 5,
+        "Loneliness": -5
+      }
+    },
+    "PetTypes": [
+      { "Type": "Dog" },
+      { "Type": "Cat" },
+      { "Type": "Bird" },
+      { "Type": "Rabbit" },
+      { "Type": "Fish" },
+      { "Type": "Iguana" },
+      { "Type": "Hamster" },
+      { "Type": "Turtle" },
+      { "Type": "Snake" },
+      { "Type": "Ferret" },
+      { "Type": "Guinea Pig" },
+      { "Type": "Chinchilla" },
+      { "Type": "Parrot" },
+      { "Type": "Lizard" },
+      { "Type": "Horse" }
+    ]
+  },
+  {
+    "Type": "Nap",
+    "StatsDistribution": {
+      "Stats": {
+        "Happiness": 5,
+        "Boredom": -5,
+        "Hunger": 5,
+        "Tiredness": -30,
+        "Loneliness": 5
+      }
+    },
+    "PetTypes": [
+      { "Type": "Cat" },
+      { "Type": "Dog" },
+      { "Type": "Rabbit" },
+      { "Type": "Hamster" },
+      { "Type": "Chinchilla" },
+      { "Type": "Lizard" },
+      { "Type": "Iguana" },
+      { "Type": "Turtle" },
+      { "Type": "Snake" },
+      { "Type": "Ferret" },
+      { "Type": "Guinea Pig" },
+      { "Type": "Horse" }
+    ]
+  },
+  {
+    "Type": "Pet",
+    "StatsDistribution": {
+      "Stats": {
+        "Happiness": 20,
+        "Boredom": -5,
+        "Hunger": 0,
+        "Tiredness": 0,
+        "Loneliness": -20
+      }
+    },
+    "PetTypes": [
+      { "Type": "Dog" },
+      { "Type": "Cat" },
+      { "Type": "Hamster" },
+      { "Type": "Rabbit" },
+      { "Type": "Ferret" },
+      { "Type": "Guinea Pig" },
+      { "Type": "Chinchilla" },
+      { "Type": "Horse" },
+      { "Type": "Iguana" },
+      { "Type": "Lizard" }
+    ]
+  },
+  {
+    "Type": "Ignore",
+    "StatsDistribution": {
+      "Stats": {
+        "Happiness": -10,
+        "Boredom": 10,
+        "Hunger": 5,
+        "Tiredness": 0,
+        "Loneliness": 15
+      }
+    },
+    "PetTypes": [
+      { "Type": "Dog" },
+      { "Type": "Cat" },
+      { "Type": "Parrot" },
+      { "Type": "Ferret" },
+      { "Type": "Rabbit" },
+      { "Type": "Guinea Pig" },
+      { "Type": "Hamster" },
+      { "Type": "Chinchilla" },
+      { "Type": "Horse" },
+      { "Type": "Bird" },
+      { "Type": "Fish" }
+    ]
+  },
+  {
+    "Type": "SingTo",
+    "StatsDistribution": {
+      "Stats": {
+        "Happiness": 10,
+        "Boredom": -8,
+        "Hunger": 0,
+        "Tiredness": -5,
+        "Loneliness": -10
+      }
+    },
+    "PetTypes": [
+      { "Type": "Parrot" },
+      { "Type": "Bird" },
+      { "Type": "Dog" },
+      { "Type": "Cat" },
+      { "Type": "Fish" },
+      { "Type": "Rabbit" },
+      { "Type": "Turtle" }
+    ]
+  },
+  {
+    "Type": "Scold",
+    "StatsDistribution": {
+      "Stats": {
+        "Happiness": -20,
+        "Boredom": 0,
+        "Hunger": 0,
+        "Tiredness": 0,
+        "Loneliness": 10
+      }
+    },
+    "PetTypes": [
+      { "Type": "Dog" },
+      { "Type": "Cat" },
+      { "Type": "Ferret" },
+      { "Type": "Parrot" },
+      { "Type": "Horse" },
+      { "Type": "Rabbit" }
+    ]
+  },
+  {
+    "Type": "Train",
+    "StatsDistribution": {
+      "Stats": {
+        "Happiness": -5,
+        "Boredom": -10,
+        "Hunger": 10,
+        "Tiredness": 20,
+        "Loneliness": -5
+      }
+    },
+    "PetTypes": [
+      { "Type": "Dog" },
+      { "Type": "Cat" },
+      { "Type": "Parrot" },
+      { "Type": "Ferret" },
+      { "Type": "Rabbit" },
+      { "Type": "Horse" },
+      { "Type": "Iguana" },
+      { "Type": "Lizard" },
+      { "Type": "Bird" }
+    ]
+  },
+  {
+    "Type": "WatchTVTogether",
+    "StatsDistribution": {
+      "Stats": {
+        "Happiness": 10,
+        "Boredom": -15,
+        "Hunger": 5,
+        "Tiredness": -5,
+        "Loneliness": -10
+      }
+    },
+    "PetTypes": [
+      { "Type": "Dog" },
+      { "Type": "Cat" },
+      { "Type": "Parrot" },
+      { "Type": "Ferret" },
+      { "Type": "Guinea Pig" },
+      { "Type": "Hamster" },
+      { "Type": "Chinchilla" },
+      { "Type": "Rabbit" },
+      { "Type": "Turtle" },
+      { "Type": "Lizard" },
+      { "Type": "Snake" }
+    ]
+  }
+]

@@ -5,89 +5,121 @@ public static class DataSeeder
 {
     public static void Seed(PetSimContext context, IWebHostEnvironment env)
     {
-        if (!context.PetTypes.Any())
-        {
-            SeedPetTypes(context, env);
-        }
-        if (!context.Pets.Any())
-        {
-            SeedPets(context, env);
-        }
+        // SeedPets(context, env);
+        SeedStatsActions(context, env);
+        // SeedPetTypes(context, env);
     }
-
 
     private static void SeedPets(PetSimContext context, IWebHostEnvironment env)
     {
-        var petData = GetData<Pet>(env, "pets");
-
-        foreach (var pet in petData)
+        if (!context.Pets.Any())
         {
-            if (pet.PetStats == null || pet.PetStats.Stats == null)
-            {
-                throw new Exception($"No pet stats data found, seeding failed");
-            }
 
-            // Assign Pet ID
-            pet.Id = Guid.NewGuid();
-            pet.Birthdate = DateTime.Now;
+            var petData = GetData<Pet>(env, "pets");
 
-            // Ensure PetType exists, if not, create it
-            var petType = context.PetTypes.FirstOrDefault(pt => pt.Type == pet.Type);
-            if (petType == null)
+            foreach (var data in petData)
             {
-                petType = new PetType
+                if (data.PetStats?.Stats == null)
+                    throw new Exception("No pet stats data found, seeding failed.");
+
+                var petId = Guid.NewGuid();
+
+                // Get or create the PetType
+                var petType = context.PetTypes.FirstOrDefault(pt => pt.Type == data.Type);
+                if (petType == null)
+                    throw new Exception($"No pet type found for {data.Type}, seeding failed.");
+
+                var stats = data.PetStats.Stats;
+                var petStats = new PetStats
                 {
                     Id = Guid.NewGuid(),
-                    Type = pet.Type
+                    PetId = petId,
+                    Stats = new Stats
+                    {
+                        Happiness = stats.Happiness,
+                        Hunger = stats.Hunger,
+                        Boredom = stats.Boredom,
+                        Tiredness = stats.Tiredness,
+                        Weight = stats.Weight,
+                        Loneliness = stats.Loneliness
+                    }
                 };
-                context.PetTypes.Add(petType);
+
+                var pet = new Pet
+                {
+                    Id = petId,
+                    Name = data.Name,
+                    Type = data.Type,
+                    Birthdate = DateTime.Now,
+                    PetTypeID = petType.Id,
+                    PetStats = petStats,
+                    PetStatsId = petStats.Id
+                };
+
+                context.PetStats.Add(petStats);
+                context.Pets.Add(pet);
             }
 
-            // Assign PetTypeId (make sure it's pointing to a valid PetType)
-            pet.PetTypeID = petType.Id;
-
-            // Create PetStats and link it to the Pet
-            var petStats = new PetStats
-            {
-                Id = Guid.NewGuid(),
-                PetId = pet.Id,  // Link PetStats to this pet
-                Stats = new Stats
-                {
-                    Happiness = pet.PetStats.Stats.Happiness,
-                    Hunger = pet.PetStats.Stats.Hunger,
-                    Boredom = pet.PetStats.Stats.Boredom,
-                    Tiredness = pet.PetStats.Stats.Tiredness,
-                    Weight = pet.PetStats.Stats.Weight,  // Now it's a decimal or double
-                    Loneliness = pet.PetStats.Stats.Loneliness
-                }
-            };
-
-            // Assign PetStatsId to the Pet
-            pet.PetStatsId = petStats.Id;
-
-            // Add the pet and its pet stats to the context
-            context.PetStats.Add(petStats);
-            context.Pets.Add(pet);
+            context.SaveChanges();
         }
-
-        context.SaveChanges();
     }
 
 
-    private static void SeedPetTypes(PetSimContext context, IWebHostEnvironment env)
+    private static void SeedStatsActions(PetSimContext context, IWebHostEnvironment env)
     {
 
+        if (!context.StatsAction.Any())
+        {
+            var statsActionsData = GetData<StatsAction>(env, "statsAction");
 
-        var petTypeData = GetData<PetType>(env, "petTypes");
+            foreach (var data in statsActionsData)
+            {
+                var stats = data.StatsDistribution;
+                var statsDistributionId = Guid.NewGuid();
+                var statsActionId = Guid.NewGuid();
 
+                var statsDistribution = new StatsDistribution
+                {
+                    Id = statsDistributionId,
+                    StatsActionId = statsActionId,
+                    Stats = stats.Stats,
+
+                };
+
+
+                var statsAction = new StatsAction
+                {
+                    Id = statsActionId,
+                    Type = data.Type,
+                    PetTypes = data.PetTypes ?? new List<PetType>(),
+                    StatsDistribution = statsDistribution,
+                    StatsDistributionId = statsDistributionId
+                };
+
+                statsDistribution.StatsAction = statsAction;
+
+                context.StatsAction.Add(statsAction);
+                context.StatsDistribution.Add(statsDistribution);
+                context.SaveChanges();
+
+            }
+        }
+    }
+
+    private static void SeedPetTypes(PetSimContext context, IWebHostEnvironment env)
+    {
         if (!context.PetTypes.Any())
         {
-            foreach (var petType in petTypeData)
+            var petTypeData = GetData<PetType>(env, "petTypes");
+
+            foreach (var data in petTypeData)
             {
+                var petType = new PetType
+                {
 
-                petType.Id = Guid.NewGuid();
-                petType.Type = petType.Type;
-
+                    Id = Guid.NewGuid(),
+                    Type = data.Type,
+                };
                 context.PetTypes.Add(petType);
             }
 

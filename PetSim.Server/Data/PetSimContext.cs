@@ -24,7 +24,7 @@ public class PetSimContext : DbContext
         modelBuilder.Entity<StatsDistribution>()
             .HasOne(s => s.StatsAction)
             .WithOne(a => a.StatsDistribution)
-            .HasForeignKey<StatsAction>(s => s.StatsActionId)
+            .HasForeignKey<StatsAction>(s => s.Id)
             .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<StatsDistribution>()

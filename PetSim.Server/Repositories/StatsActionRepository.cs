@@ -19,17 +19,20 @@ public class StatsActionRepository
 
     public async Task<StatsAction> CreateStatsAction(CreateStatsActionDto createStatsActionDto)
     {
-        var petType = await _context.PetTypes.SingleOrDefaultAsync(pt => pt.Type == createStatsActionDto.PetType);
 
-        if (petType == null) throw new Exception($"Pet type not found for {createStatsActionDto.PetType}. Create stats action failed.");
+        foreach (var petType in createStatsActionDto.PetTypes)
+        {
+
+            if (petType == null) throw new Exception($"Pet type not found for {petType}. Create stats action failed.");
+        }
 
         var statsActionId = Guid.NewGuid();
 
         var statsAction = new StatsAction
         {
-            StatsActionId = statsActionId,
+            Id = statsActionId,
             Type = createStatsActionDto.Type,
-            PetTypeID = petType.Id,
+            PetTypes = createStatsActionDto.PetTypes,
         };
 
         var statsDistribution = new StatsDistribution
