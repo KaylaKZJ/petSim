@@ -5,9 +5,9 @@ public static class DataSeeder
 {
     public static void Seed(PetSimContext context, IWebHostEnvironment env)
     {
-        // SeedPets(context, env);
+        SeedPetTypes(context, env);
+        SeedPets(context, env);
         SeedStatsActions(context, env);
-        // SeedPetTypes(context, env);
     }
 
     private static void SeedPets(PetSimContext context, IWebHostEnvironment env)
