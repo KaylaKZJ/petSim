@@ -48,12 +48,20 @@ public class StatsActionRepository
     }
     public async Task<StatsAction> CreateStatsAction(CreateStatsActionDto createStatsActionDto)
     {
+        var petTypes = createStatsActionDto.PetTypes.Where(pt => pt != null).Select(pt => pt.Type).ToList();
 
-        foreach (var petType in createStatsActionDto.PetTypes)
+        var existingPetTypes = await _context.PetTypes
+            .Where(pt => petTypes.Contains(pt.Type))
+            .Select(pt => pt.Type)
+            .ToListAsync();
+
+        var missingPetTypes = petTypes.Except(existingPetTypes).ToList();
+
+        if (missingPetTypes.Any())
         {
-
-            if (petType == null) throw new Exception($"Pet type not found for {petType}. Create stats action failed.");
+            throw new Exception($"Pet types not found: {string.Join(", ", missingPetTypes)}");
         }
+
 
         var statsActionId = Guid.NewGuid();
 
